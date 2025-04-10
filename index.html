@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday, Ponnu! 🎂</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Lato:300italic');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(135deg, #d6336c 0%, #ff6b81 100%);
+      font-family: 'Lato', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #cake {
+      width: 80vw;
+      max-width: 250px;
+      height: auto;
+      z-index: 2;
+    }
+
+    .cake {
+      background: #fff;
+      border-radius: 10px;
+      position: absolute;
+      top: 228px;
+      left: 50%;
+      margin-left: -2.4px;
+      width: 5px;
+      height: 35px;
+      transform: translateY(-300px);
+      backface-visibility: hidden;
+      animation: in 500ms 6s ease-out forwards;
+      z-index: 2;
+    }
+
+    .cake:after, .cake:before {
+      background: rgba(255, 0, 0, 0.4);
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2.2px;
+    }
+
+    .cake:after { top: 25%; }
+    .cake:before { top: 45%; }
+
+    .fuego {
+      border-radius: 100%;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      margin-left: -2.6px;
+      width: 6.6px;
+      height: 18px;
+    }
+
+    .fuego:nth-child(1) { animation: fuego 2s 6.5s infinite; }
+    .fuego:nth-child(2) { animation: fuego 1.5s 6.5s infinite; }
+    .fuego:nth-child(3) { animation: fuego 1s 6.5s infinite; }
+    .fuego:nth-child(4) { animation: fuego 0.5s 6.5s infinite; }
+    .fuego:nth-child(5) { animation: fuego 0.2s 6.5s infinite; }
+
+    @keyframes fuego {
+      0%, 100% {
+        background: rgba(254, 248, 97, 0.5);
+        box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        background: rgba(255, 50, 0, 0.1);
+        box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+        transform: translateY(-20px) scale(0);
+      }
+    }
+
+    @keyframes in {
+      to { transform: translateY(0); }
+    }
+
+    .text {
+      color: #fff;
+      font-style: italic;
+      text-align: center;
+      margin-top: 1rem;
+      animation: fadeIn 2s ease-in 6s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      z-index: 2;
+    }
+
+    .text h1 {
+      font-size: 1.6em;
+      margin: 0;
+    }
+
+    .name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .hidden-message {
+      display: none;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 💖 Heart Particle Styling */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      color: #fff;
+      font-size: 16px;
+      animation: float 8s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(0.8);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 💖 Heart Particles -->
+  <div class="particles">
+    <script>
+      for (let i = 0; i < 40; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heart.style.fontSize = (12 + Math.random() * 18) + 'px';
+        document.querySelector('.particles').appendChild(heart);
+      }
+    </script>
+  </div>
+
+  <!-- 🎂 Candle -->
+  <div class="cake">
+    <div class="fuego"></div>
+    <div class="fuego"></div>
+    <div class="fuego"></div>
+    <div class="fuego"></div>
+    <div class="fuego"></div>
+  </div>
+
+  <!-- 🎂 Your SVG Cake -->
+  <svg id="cake" ...>
+    <!-- Paste your full SVG here -->
+  </svg>
+
+  <!-- 💌 Message -->
+  <div class="text">
+    <h1>Belated Happy Birthday!</h1>
+    <p class="name" onclick="document.getElementById('extraMsg').style.display='block'">Ponnu</p>
+    <p id="extraMsg" class="hidden-message">Hope your day was as sweet as this cake! 🎂💖</p>
+  </div>
+</body>
+</html>
